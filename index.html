@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HR Section 01</title>
+  <title>HR Section</title>
   <link rel="stylesheet" href="Test/test.css">
 </head>
 <body>
-  <form action="save_information.php" method="POST" enctype="multipart/form-data">
+  <form action="submit.php" method="POST" enctype="multipart/form-data">
   <div class="form-container">
 
     <!--Applicant information fill section 01-->
@@ -131,9 +131,33 @@
     <input  type="text" name="benefits"  placeholder="BENEFITS"  required>
 </div>
 
+<!--Approval section-->
+<div class="field-group">
+    <input  type="text" name="approval"  placeholder="APPROVAL"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="name"  placeholder="NAME"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="aDesignation"  placeholder="DESIGNATION"  required>
+</div>
+<div class="field-group">
+    <input  type="date" name="aDate"  required>
+</div>
+<!--<div class="field-group">
+    <input  type="text" name="approval"  placeholder="Signature"  required>
+</div>-->
+<h4>Client E-Signature</h4>
+<div class="field-group">
+  <canvas id="signature-pad" width="400" height="150" style="border:1px solid #000;"></canvas><br>
+  <button type="button" onclick="clearSignature()">Clear</button>
+</div>
+<!-- Hidden field to store signature -->
+<input type="hidden" name="signatureImage" id="signatureImage">
+
 
   <button type="submit">Submit</button>
-  </div>
-  </form>
+</div>
+</form>
 </body>
 </html>
