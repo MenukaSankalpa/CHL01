@@ -1,0 +1,131 @@
+☠️❤️
+John Doe
+Springfield
+28
+Employed
+Married, 2 children
+Career advancement
+Excellent
+
+8
+9
+10
+8
+8
+
+30
+60000
+75000
+15
+
+value=1
+
+Alice Smith
+HR Manager
+2025-07-01
+
+Bob Johnson
+Team Lead
+2025-07-02
+
+Carol White
+Department Head
+2025-07-03
+
+2025-07-10
+Software Engineer
+Tech Innovators Ltd
+70000
+Health insurance, Bonus
+Approved
+Michael Brown
+HR Director
+2025-07-05
+
+☠️❤️
+Jane Smith
+Rivertown
+32
+Unemployed
+Single, no children
+Looking for new challenges
+Very Good
+
+7
+8
+9
+7
+9
+
+45
+45000
+90000
+18
+
+value=2
+
+David Lee
+Recruitment Specialist
+2025-08-10
+
+Emma Davis
+Project Manager
+2025-08-11
+
+Frank Wilson
+Senior Developer
+2025-08-12
+
+2025-08-20
+Data Analyst
+NextGen Solutions
+65000
+Dental insurance, Flexible hours
+Pending
+Laura Green
+Operations Manager
+2025-08-15
+
+☠️❤️
+Mark Johnson
+Lakeside
+40
+Self-Employed
+Married, 3 children
+Relocation to new city
+Good
+
+9
+7
+8
+9
+10
+
+50
+60111
+80000
+20
+
+value=3
+
+Sarah Thompson
+Team Coordinator
+2025-09-05
+
+Michael Brown
+Senior Analyst
+2025-09-06
+
+Jessica Miller
+Department Supervisor
+2025-09-07
+
+2025-09-15
+Marketing Manager
+Bright Future Inc.
+72000
+Stock options, Gym membership
+Approved
+Kevin White
+General Manager
+2025-09-10
