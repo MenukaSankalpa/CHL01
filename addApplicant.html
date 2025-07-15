@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HR Section</title>
+  <link rel="stylesheet" href="css/test.css">
+</head>
+<body>
+  <form action="submit.php" method="POST" enctype="multipart/form-data">
+  <div class="form-container">
+
+    <!--Applicant information fill section 01-->
+    <h2>Applicant Information</h2>
+    <div class="field-group">
+      <input type="text" name="applicantName" placeholder="NAME OF APPLICANT" required>
+    </div>
+    <div class="field-group">
+      <input type="text" name="homeTown" placeholder="HOME TOWN" required>
+    </div>
+    <div class="field-group">
+      <input type="number" name="age" placeholder="AGE" min="18" max="65" required>
+    </div>
+    <div class="field-group">
+      <input type="text" name="status"  placeholder="PRESENT EMPLOYMENT STATUS" required>
+    </div>
+    <div class="field-group">
+      <input type="text" name="familyDetails"  placeholder="FAMILY DETAILS" required>
+    </div>
+    <div class="field-group">
+      <input type="text" name="leaving"  placeholder="REASON FOR LEAVING" required>
+    </div>
+    <div class="field-group">
+      <input type="text" name="performance"  placeholder="PERFORMANCE AT EMPLOYMENT TEST" required>
+    </div>
+
+    <!--Applicant information fill section 02-->
+    <h2>GUIDELINES ON SELECTION CRITERIA</h2>
+    <div class="field-group">
+      <label for="">APPEARANCE / PERSONALITY</label>
+      <input class="input2" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" required>
+    </div>
+    <div class="field-group">
+      <label for="">COMMUNICATION SKILLS</label>
+      <input class="input2 mark-field" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" required>
+    </div>
+    <div class="field-group">
+      <label for="">EXPERIENCE REQUIRED FOR THE JOB</label>
+      <input class="input2 mark-field" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" required>
+    </div>
+    <div class="field-group">
+      <label for="">QUALIFICATION REQUIRED FOR THE JOB</label>
+      <input class="input2 mark-field" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" required>
+    </div>
+    <div class="field-group">
+      <label for="">INTEREST IN POSITION AND ORGANIZATION</label>
+      <input class="input2 mark-field" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" required>
+    </div>
+    <div class="field-group">
+      <label for="">TOTAL INTERVIEW MARKS</label>
+      <input id="totalMark" class="input2 mark-field" type="number" name="mark[]"  placeholder="MARK" min="0" max="10" readonly >
+    </div>
+
+    <!--Applicant information fill section 03-->
+    <div class="field-group">
+      <input  type="number" name="noticePeriod"  placeholder="NOTICE PERIOD"  required>
+    </div>
+    <div class="field-group">
+      <input  type="number" name="presentSalary"  placeholder="PRESENT SALARY"  required>
+    </div>
+    <div class="field-group">
+      <input  type="number" name="expectedSalary"  placeholder="EXPECTED SALARY"  required>
+    </div>
+    <div class="field-group">
+      <input  type="number" name="possibleWork"  placeholder="POSSIBLE DATE FOR COMMENCING WORK"  required>
+    </div>
+
+    <!--Applicant information fill section 04-->
+    <h2>OVERALL PERFORMANCE AT THE INTERVIEW</h2>
+    <label>Applicant status?</label><br><br>
+
+    <label><input type="radio" name="capital_question" value="1" required> MEETS JOB REQUIREMENT</label><br>
+    <label><input type="radio" name="capital_question" value="2"> DOES NOT MEET JOB REQUIREMENT</label><br>
+    <label><input type="radio" name="capital_question" value="3"> OVER QUALIFIED FOR THE JOB</label><br>
+    <label><input type="radio" name="capital_question" value="4"> SUITABLE FOR ANOTHER POSITION</label><br><br>
+
+
+
+<!--Hr Information fill section 05-->
+<h3>Interview Conducted by CHL</h3>
+<table border="1" style="border-collapse: collapse; width: 100%; text-align: center;">
+  <thead>
+    <tr>
+      <th>1st INTERVIEWER</th>
+      <th>2nd INTERVIEWER</th>
+      <th>3rd INTERVIEWER</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><input type="text" name="interviewer1Name" placeholder="Name & Sign" required></td>
+      <td><input type="text" name="interviewer2Name" placeholder="Name & Sign" required></td>
+      <td><input type="text" name="interviewer3Name" placeholder="Name & Sign" required></td>
+    </tr>
+    <tr>
+      <td><input type="text" name="interviewer1Designation" placeholder="Designation" required></td>
+      <td><input type="text" name="interviewer2Designation" placeholder="Designation" required></td>
+      <td><input type="text" name="interviewer3Designation" placeholder="Designation" required></td>
+    </tr>
+    <tr>
+      <td><input type="date" name="interviewer1Date" required></td>
+      <td><input type="date" name="interviewer2Date" required></td>
+      <td><input type="date" name="interviewer3Date" required></td>
+    </tr>
+  </tbody>
+</table><br><br>
+
+
+<div class="field-group">
+    <input  type="date" name="dateAppoinment"  placeholder="DATE OF APPOINTMENT"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="position"  placeholder="POSITION"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="companyName"  placeholder="COMPANY NAME"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="agreedSalary"  placeholder="AGREED SALARY"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="benefits"  placeholder="BENEFITS"  required>
+</div>
+
+<!--Approval section-->
+<div class="field-group">
+    <input  type="text" name="approval"  placeholder="APPROVAL"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="name"  placeholder="NAME"  required>
+</div>
+<div class="field-group">
+    <input  type="text" name="aDesignation"  placeholder="DESIGNATION"  required>
+</div>
+<div class="field-group">
+    <input  type="date" name="aDate"  required>
+</div>
+<!--<div class="field-group">
+    <input  type="text" name="approval"  placeholder="Signature"  required>
+</div>-->
+<h4>Client E-Signature</h4>
+<div class="signature-container">
+  <canvas id="signature-pad" width="400" height="150" ></canvas><br>
+  <button class="sigButton" type="button" onclick="clearSignature()">Clear</button>
+</div>
+
+<input type="hidden" name="signatureImage" id="signatureImage">
+
+
+<button type="submit">Submit</button>
+</div>
+</form>
+<script>
+
+  const markInputs = document.querySelectorAll('.mark-field');
+  const totalMarkInput = document.getElementById('totalMark');
+
+  function calculateTotal() {
+    let sum = 0;
+    markInputs.forEach((input, index) => {
+      if (index < 5) { 
+        const val = parseInt(input.value) || 0;
+        sum += val;
+      }
+    });
+    totalMarkInput.value = sum;
+  }
+
+  markInputs.forEach((input, index) => {
+    if (index < 5) {
+      input.addEventListener('input', calculateTotal);
+    }
+  });
+
+
+  const canvas = document.getElementById('signature-pad');
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+
+  canvas.addEventListener('mousedown', () => drawing = true);
+  canvas.addEventListener('mouseup', () => drawing = false);
+  canvas.addEventListener('mouseout', () => drawing = false);
+
+  canvas.addEventListener('mousemove', draw);
+
+  function draw(e) {
+    if (!drawing) return;
+    const rect = canvas.getBoundingClientRect();
+    ctx.lineWidth = 2;
+    ctx.lineCap = 'round';
+    ctx.strokeStyle = '#000';
+    ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+  }
+
+  function clearSignature() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+  }
+
+  // Save the signature image to a hidden input
+  document.querySelector('form').addEventListener('submit', function (e) {
+    const signatureData = canvas.toDataURL('image/png');
+    document.getElementById('signatureImage').value = signatureData;
+  });
+</script>
+
+</body>
+</html>
