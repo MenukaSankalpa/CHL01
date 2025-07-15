@@ -44,6 +44,22 @@ body {
   background-color: #224bcf;
 }
 
+.logout-container {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  z-index: 10;
+}
+
+.logout-btn {
+  background-color: #e84242;
+}
+
+.logout-btn:hover {
+  background-color: #c93030;
+}
+
+
 .center-message h1 {
   font-size: 3.5rem;
   color: #000000ff;
