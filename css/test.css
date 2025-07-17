@@ -1,10 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@0;1&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --primary-color: #2f63e8;       /* bright blue accent */
-  --primary-second-color: #ffffff; /* white */
-  --background-color: #f5f9fa;    /* light background */
-  --input-bg: #f5f5f5;            /* input background */
+  --primary-color: #2f63e8;
+  --primary-second-color: #ffffff;
+  --background-color: #f5f9fa;
+  --input-bg: #f5f5f5;
   --input-border: #ccc;
   --input-border-focus: #2f63e8;
   --button-bg: #2f63e8;
@@ -30,14 +30,17 @@ body {
 }
 
 .form-container {
-  width: 600px;
-  margin: 40px 0;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  width: 900px;
+  margin: 20px auto;
   background: var(--primary-second-color);
   padding: 30px 30px 60px;
   border-radius: 16px;
   box-shadow: 0 15px 25px rgba(0,0,0,0.1);
   animation: slideIn 0.5s ease;
 }
+
 
 @keyframes slideIn {
   from {
@@ -67,7 +70,9 @@ h2, h3, h4 {
 
 .field-group input[type="text"],
 .field-group input[type="number"],
-.field-group input[type="date"] {
+.field-group input[type="date"],
+.field-group input[type="file"],
+textarea {
   flex: 1;
   padding: 12px 15px;
   font-size: 16px;
@@ -80,7 +85,9 @@ h2, h3, h4 {
 
 .field-group input[type="text"]:focus,
 .field-group input[type="number"]:focus,
-.field-group input[type="date"]:focus {
+.field-group input[type="date"]:focus,
+.field-group input[type="file"]:focus,
+textarea:focus {
   border-color: var(--input-border-focus);
   background-color: #fff;
 }
@@ -185,6 +192,74 @@ button[type="submit"] {
   transition: background-color 0.3s;
 }
 
+.sigButton {
+  display: inline-block;
+  padding: 8px 20px;
+  background-color: var(--button-bg);
+  color: var(--primary-second-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 12px;
+  transition: background-color 0.3s;
+  text-align: center;
+}
+
+
+
 button[type="submit"]:hover {
   background-color: var(--button-bg-hover);
 }
+
+canvas {
+  border: 1.5px solid var(--signature-border);
+  border-radius: 6px;
+  background: #fff;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.signature-container{
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+input[type="radio"]{
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+input[read-only] {
+  background: #e9ecef;
+  cursor: not-allowed;
+}
+
+.signature-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+
+.signature-box button {
+  padding: 6px 14px;
+  background-color: var(--button-bg);
+  color: var(--primary-second-color);
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.signature-box button:hover {
+  background-color: var(--button-bg-hover);
+}
+
+
+
