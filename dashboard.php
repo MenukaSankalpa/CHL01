@@ -31,7 +31,7 @@ if (isset($_GET['logout'])) {
   </div>
   <div class="dashboard-container">
     <div class="top-buttons">
-      <a href="../index.html" class="btn">Add Applicant</a>
+      <a href="components/addApplicant.html" class="btn">Add Applicant</a>
       <a href="view_applicant.php" class="btn">View Applicant</a>
       <a href="delete_applicant.php" class="btn">Delete Applicant</a>
     </div>
