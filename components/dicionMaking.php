@@ -1,8 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "hr_applications");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once '../includes/db.php';
 
 $id = $_POST['id'];
 $selection = $_POST['selection'];
