@@ -1,9 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "hr_applications");
-
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once '../includes/db.php';
 
 function saveSignature($data, $prefix) {
     $data = str_replace('data:image/png;base64,', '', $data);
