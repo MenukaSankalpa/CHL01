@@ -1,11 +1,7 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "hr_applications");
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+require_once '../includes/db.php';
 
-// Fetch all applicants (you can limit or filter later)
-$sql = "SELECT id, applicantName, experienceYears, appearance, communication, experience, qualification, interest, totalMarks, presentSalary, expectedSalary, noticePeriod FROM applicants ORDER BY id DESC";
+$sql = "SELECT id, applicantName, experienceYears, appearance, communication, experience, qualification, interest, totalMarks, presentSalary, expectedSalary, noticePeriod, selection FROM applicants ORDER BY id DESC";
 $result = $conn->query($sql);
 ?>
 
@@ -13,52 +9,94 @@ $result = $conn->query($sql);
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>View Applicants</title>
+  <title>VIEW APPLICANT</title>
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
     body {
-      font-family: Arial, sans-serif;
-      padding: 30px;
-      background-color: #f9f9f9;
+      font-family: 'Poppins', sans-serif;
+      padding: 40px;
+      background-color: #f0f4f8;
+      color: #333;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #0056b3;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
-      margin-bottom: 30px;
+      background-color: white;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+      border-radius: 10px;
+      overflow: hidden;
     }
 
     th, td {
-      border: 1px solid #aaa;
-      padding: 12px;
+      padding: 14px 12px;
       text-align: center;
     }
 
     th {
       background-color: #007BFF;
-      color: white;
+      color: #fff;
+      font-weight: 600;
+      font-size: 15px;
+    }
+
+    tr:nth-child(even):not(.selected-row) {
+      background-color: #f9f9f9;
+    }
+
+    tr:hover {
+      background-color: #e6f0ff;
+    }
+
+    .selected-row {
+      background-color: #d4edda !important;
+      color: #2d8231ff;
+      font-weight: 500;
     }
 
     select {
-      padding: 5px;
+      padding: 6px 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-family: 'Poppins', sans-serif;
     }
 
-    .decision-form {
-      display: inline-block;
+    .save-wrapper {
+      text-align: right;
+      margin-top: 20px;
+      padding-right: 20px;
     }
 
-    .success {
-      color: green;
-    }
+   .save-button {
+     padding: 10px 20px;
+     font-size: 16px;
+     background-color: #007BFF;
+     color: white;
+     border: none;
+     border-radius: 6px;
+     cursor: pointer;
+     transition: background 0.3s ease;
+   }
 
-    .danger {
-      color: red;
-    }
+   .save-button:hover {
+     background-color: #0056b3;
+   }
+   
   </style>
 </head>
 <body>
-  <h2>Applicant Summary</h2>
 
-  <?php if ($result->num_rows > 0): ?>
+<h2>APPLICANT SUMMERY</h2>
+
+<?php if ($result->num_rows > 0): ?>
+  <form id="bulkForm">
     <table>
       <thead>
         <tr>
@@ -78,37 +116,63 @@ $result = $conn->query($sql);
       </thead>
       <tbody>
         <?php while($row = $result->fetch_assoc()): ?>
-          <tr>
+          <?php
+            $isSelected = strtolower(trim($row['selection'])) === 'selected';
+            $rowClass = $isSelected ? 'selected-row' : '';
+          ?>
+          <tr class="<?= $rowClass ?>">
             <td><?= htmlspecialchars($row["applicantName"]) ?></td>
             <td><?= htmlspecialchars($row["experienceYears"]) ?></td>
-            <td><?= $row["appearance"] ?></td>
-            <td><?= $row["communication"] ?></td>
-            <td><?= $row["experience"] ?></td>
-            <td><?= $row["qualification"] ?></td>
-            <td><?= $row["interest"] ?></td>
-            <td><?= $row["totalMarks"] ?></td>
-            <td><?= $row["presentSalary"] ?></td>
-            <td><?= $row["expectedSalary"] ?></td>
-            <td><?= $row["noticePeriod"] ?></td>
+            <td><?= htmlspecialchars($row["appearance"]) ?></td>
+            <td><?= htmlspecialchars($row["communication"]) ?></td>
+            <td><?= htmlspecialchars($row["experience"]) ?></td>
+            <td><?= htmlspecialchars($row["qualification"]) ?></td>
+            <td><?= htmlspecialchars($row["interest"]) ?></td>
+            <td><?= htmlspecialchars($row["totalMarks"]) ?></td>
+            <td><?= htmlspecialchars($row["presentSalary"]) ?></td>
+            <td><?= htmlspecialchars($row["expectedSalary"]) ?></td>
+            <td><?= htmlspecialchars($row["noticePeriod"]) ?></td>
             <td>
-              <form class="decision-form" method="POST" action="update_decision.php">
-                <input type="hidden" name="id" value="<?= $row['id'] ?>" />
-                <select name="selection">
-                  <option value="">Select</option>
-                  <option value="Selected">Selected</option>
-                  <option value="Not Selected">Not Selected</option>
-                </select>
-                <button type="submit">Save</button>
-              </form>
+              <select name="selection[<?= $row['id'] ?>]" required>
+                <option value="">Status</option>
+                <option value="Selected" <?= $isSelected ? 'selected' : '' ?>>Selected</option>
+                <option value="Not Selected" <?= strtolower($row['selection']) === 'not selected' ? 'selected' : '' ?>>Not Selected</option>
+              </select>
             </td>
           </tr>
         <?php endwhile; ?>
       </tbody>
     </table>
-  <?php else: ?>
-    <p>No applicants found.</p>
-  <?php endif; ?>
 
-<?php $conn->close(); ?>
+    <div class="save-wrapper">
+        <button type="submit" class="save-button">Save</button>
+    </div>
+
+    <!--<button type="submit" class="save-button">Save</button>-->
+  </form>
+<?php else: ?>
+  <p>No applicants found.</p>
+<?php endif; ?>
+
+<script>
+  document.getElementById('bulkForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+
+    fetch('updateDesicion.php', {
+      method: 'POST',
+      body: formData
+    })
+    .then(res => res.text())
+    .then(data => {
+      alert("All data saved successfully!");
+      window.location.href = "../dashboard.php";
+    })
+    .catch(err => {
+      alert("Error saving decisions.");
+    });
+  });
+</script>
+
 </body>
 </html>
