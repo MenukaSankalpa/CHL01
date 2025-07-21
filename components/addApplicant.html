@@ -42,27 +42,27 @@
       <h2>GUIDELINES ON SELECTION CRITERIA</h2>
       <div class="field-group">
         <label for="">APPEARANCE / PERSONALITY</label>
-        <input class="input2" type="number" name="mark[0]" placeholder="MARK" min="0" max="10" required />
+        <input class="input2" type="number" name="mark[0]" placeholder="MARK" required />
       </div>
       <div class="field-group">
         <label for="">COMMUNICATION SKILLS</label>
-        <input class="input2 mark-field" type="number" name="mark[1]" placeholder="MARK" min="0" max="10" required />
+        <input class="input2 mark-field" type="number" name="mark[1]" placeholder="MARK"  required />
       </div>
       <div class="field-group">
         <label for="">EXPERIENCE REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[2]" placeholder="MARK" min="0" max="10" required />
+        <input class="input2 mark-field" type="number" name="mark[2]" placeholder="MARK"  required />
       </div>
       <div class="field-group">
         <label for="">QUALIFICATION REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[3]" placeholder="MARK" min="0" max="10" required />
+        <input class="input2 mark-field" type="number" name="mark[3]" placeholder="MARK"  required />
       </div>
       <div class="field-group">
         <label for="">INTEREST IN POSITION AND ORGANIZATION</label>
-        <input class="input2 mark-field" type="number" name="mark[4]" placeholder="MARK" min="0" max="10" required />
+        <input class="input2 mark-field" type="number" name="mark[4]" placeholder="MARK"  required />
       </div>
       <div class="field-group">
         <label for="">TOTAL INTERVIEW MARKS</label>
-        <input id="totalMark" class="input2 mark-field" type="number" name="mark[5]" placeholder="MARK" min="0" max="50"/>
+        <input id="totalMark" class="input2 mark-field" type="number" placeholder="MARK" min="0" max="50" readonly/>
       </div>
 
       <!--Applicant information fill section 03-->
@@ -217,20 +217,29 @@
   </form>
 
   <script>
-    // Calculate total marks
-    const markInputs = document.querySelectorAll(".mark-field");
-    const totalMarkInput = document.getElementById("totalMark");
 
-    function calculateTotal() {
-      let sum = 0;
-      markInputs.forEach((input) => {
-        sum += parseInt(input.value) || 0;
-      });
-      totalMarkInput.value = sum;
-    }
+  const totalMarkInput = document.getElementById("totalMark");
+  const markInputs = [
+    document.querySelector('input[name="mark[0]"]'),
+    document.querySelector('input[name="mark[1]"]'),
+    document.querySelector('input[name="mark[2]"]'),
+    document.querySelector('input[name="mark[3]"]'),
+    document.querySelector('input[name="mark[4]"]'),
+  ];
+
+  function calculateTotal() {
+    let sum = 0;
     markInputs.forEach((input) => {
-      input.addEventListener("input", calculateTotal);
+      sum += parseInt(input.value) || 0;
     });
+    totalMarkInput.value = sum;
+  }
+
+  markInputs.forEach((input) => {
+    input.addEventListener("input", calculateTotal);
+  });
+
+
 
     // Setup signature pads
     function setupSignaturePad(canvasId, hiddenInputId) {
