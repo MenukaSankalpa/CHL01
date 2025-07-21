@@ -1,10 +1,11 @@
 <?php
 require_once '../includes/db.php';
 
+// Fetch selected applicants
 $selectedSql = "SELECT id, applicantName, position, agreedSalary, joinDate FROM applicants WHERE LOWER(selection) = 'selected'";
 $selectedResult = $conn->query($selectedSql);
 
-
+// Fetch not selected applicants
 $notSelectedSql = "SELECT id, applicantName, position, agreedSalary FROM applicants WHERE LOWER(selection) = 'not selected'";
 $notSelectedResult = $conn->query($notSelectedSql);
 ?>
@@ -50,27 +51,49 @@ $notSelectedResult = $conn->query($notSelectedSql);
       background-color: #f9f9f9;
     }
 
-    button, .print-btn {
-      padding: 8px 16px;
+    .btn {
+      padding: 8px 14px;
+      font-weight: bold;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .delete-btn {
       background-color: #dc3545;
       color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: bold;
+    }
+
+    .delete-btn:hover {
+      background-color: #c82333;
     }
 
     .print-btn {
       background-color: #28a745;
-      margin-bottom: 10px;
-    }
-
-    button:hover {
-      background-color: #c82333;
+      color: white;
     }
 
     .print-btn:hover {
       background-color: #218838;
+    }
+
+    .save-btn {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .save-btn:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="date"] {
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .print-area {
+      display: none;
     }
 
   </style>
@@ -80,30 +103,39 @@ $notSelectedResult = $conn->query($notSelectedSql);
 <h2>Selected Applicants</h2>
 
 <?php if ($selectedResult->num_rows > 0): ?>
-  <button class="print-btn" onclick="window.print()">Print</button>
-  <table>
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Position</th>
-        <th>Agreed Salary</th>
-        <th>Join Date</th>
-      </tr>
-    </thead>
-    <tbody>
-      <?php while($row = $selectedResult->fetch_assoc()): ?>
+  <form method="POST" action="saveJoinDates.php">
+    <table>
+      <thead>
         <tr>
-          <td><?= htmlspecialchars($row['applicantName']) ?></td>
-          <td><?= htmlspecialchars($row['position']) ?></td>
-          <td><?= htmlspecialchars($row['agreedSalary']) ?></td>
-          <td><?= htmlspecialchars($row['joinDate']) ?: '<em>Not Set</em>' ?></td>
+          <th>Name</th>
+          <th>Position</th>
+          <th>Agreed Salary</th>
+          <th>Join Date</th>
+          <th>Actions</th>
         </tr>
-      <?php endwhile; ?>
-    </tbody>
-  </table>
+      </thead>
+      <tbody>
+        <?php while($row = $selectedResult->fetch_assoc()): ?>
+          <tr id="row-<?= $row['id'] ?>">
+            <td><?= htmlspecialchars($row['applicantName']) ?></td>
+            <td><?= htmlspecialchars($row['position']) ?></td>
+            <td><?= htmlspecialchars($row['agreedSalary']) ?></td>
+            <td>
+              <input type="date" name="joinDate[<?= $row['id'] ?>]" value="<?= $row['joinDate'] ?>">
+            </td>
+            <td>
+              <button type="button" class="btn print-btn" onclick="printRow(<?= $row['id'] ?>)">Print</button>
+            </td>
+          </tr>
+        <?php endwhile; ?>
+      </tbody>
+    </table>
+    <button type="submit" class="btn save-btn">Save Join Dates</button>
+  </form>
 <?php else: ?>
   <p>No selected applicants found.</p>
 <?php endif; ?>
+
 
 <h2>Not Selected Applicants</h2>
 
@@ -124,9 +156,9 @@ $notSelectedResult = $conn->query($notSelectedSql);
           <td><?= htmlspecialchars($row['position']) ?></td>
           <td><?= htmlspecialchars($row['agreedSalary']) ?></td>
           <td>
-            <form method="POST" action="delete_single_applicant.php" onsubmit="return confirm('Are you sure you want to delete this applicant?');">
+            <form method="POST" action="delete_single_applicant.php" onsubmit="return confirm('Are you sure to delete this applicant?');">
               <input type="hidden" name="id" value="<?= $row['id'] ?>">
-              <button type="submit">Delete</button>
+              <button type="submit" class="btn delete-btn">Delete</button>
             </form>
           </td>
         </tr>
@@ -136,6 +168,36 @@ $notSelectedResult = $conn->query($notSelectedSql);
 <?php else: ?>
   <p>No not-selected applicants found.</p>
 <?php endif; ?>
+
+
+<!-- JavaScript to print one row -->
+<script>
+function printRow(id) {
+  const row = document.getElementById('row-' + id);
+  const cols = row.querySelectorAll('td');
+  const name = cols[0].innerText;
+  const position = cols[1].innerText;
+  const salary = cols[2].innerText;
+  const joinDate = cols[3].querySelector('input').value;
+
+  const printContent = `
+    <div style="font-family: Poppins, sans-serif; padding: 40px;">
+      <h2>Selected Applicant</h2>
+      <p><strong>Name:</strong> ${name}</p>
+      <p><strong>Position:</strong> ${position}</p>
+      <p><strong>Agreed Salary:</strong> ${salary}</p>
+      <p><strong>Join Date:</strong> ${joinDate}</p>
+    </div>
+  `;
+
+  const printWindow = window.open('', '', 'width=800,height=600');
+  printWindow.document.write(printContent);
+  printWindow.document.close();
+  printWindow.focus();
+  printWindow.print();
+  printWindow.close();
+}
+</script>
 
 </body>
 </html>
