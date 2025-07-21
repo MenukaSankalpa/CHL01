@@ -33,7 +33,7 @@ if (isset($_GET['logout'])) {
     <div class="top-buttons">
       <a href="components/addApplicant.html" class="btn">Add Applicant</a>
       <a href="components/viewApplicant.php" class="btn">View Applicant</a>
-      <a href="delete_applicant.php" class="btn">Delete Applicant</a>
+      <a href="components/deleteApplicant.php" class="btn">Delete Applicant</a>
     </div>
 
     <div class="center-message">
