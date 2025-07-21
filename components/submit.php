@@ -178,7 +178,7 @@ echo '
 </style>
 
 <div class="menu-btn">
-  <a href="../dashboard.php.php">Main Menu</a>
+  <a href="../dashboard.php">Main Menu</a>
 </div>
 ';
 
