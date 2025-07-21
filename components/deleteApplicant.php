@@ -100,7 +100,7 @@ $notSelectedResult = $conn->query($notSelectedSql);
 </head>
 <body>
 
-<h2>Selected Applicants</h2>
+<h2>SELECTED APPLICANTS</h2>
 
 <?php if ($selectedResult->num_rows > 0): ?>
   <form method="POST" action="saveJoinDates.php">
@@ -137,7 +137,7 @@ $notSelectedResult = $conn->query($notSelectedSql);
 <?php endif; ?>
 
 
-<h2>Not Selected Applicants</h2>
+<h2>NOT SELECTED APPLICANTS</h2>
 
 <?php if ($notSelectedResult->num_rows > 0): ?>
   <table>
