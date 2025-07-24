@@ -38,12 +38,12 @@ if (isset($_FILES['cvFile']) && $_FILES['cvFile']['error'] === UPLOAD_ERR_OK) {
 }
 
 // Extract marks and form data
-$appearance     = $_POST['mark'][0];
-$communication  = $_POST['mark'][1];
-$experience     = $_POST['mark'][2];
-$qualification  = $_POST['mark'][3];
-$interest       = $_POST['mark'][4];
-$totalMarks     = $_POST['mark'][5];
+$appearance     = $_POST['mark'][0] ?? null;
+$communication  = $_POST['mark'][1] ?? null;
+$experience     = $_POST['mark'][2] ?? null;
+$qualification  = $_POST['mark'][3] ?? null;
+$interest       = $_POST['mark'][4] ?? null;
+$totalMarks     = $_POST['mark'][5] ?? null;
 
 extract($_POST);
 
