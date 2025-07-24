@@ -156,7 +156,7 @@ $notSelectedResult = $conn->query($notSelectedSql);
           <td><?= htmlspecialchars($row['position']) ?></td>
           <td><?= htmlspecialchars($row['agreedSalary']) ?></td>
           <td>
-            <form method="POST" action="delete_single_applicant.php" onsubmit="return confirm('Are you sure to delete this applicant?');">
+            <form method="POST" action="deleteApplicantOne.php" onsubmit="return confirm('Are you sure to delete this applicant?');">
               <input type="hidden" name="id" value="<?= $row['id'] ?>">
               <button type="submit" class="btn delete-btn">Delete</button>
             </form>
