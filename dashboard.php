@@ -37,7 +37,7 @@ if (isset($_GET['logout'])) {
     </div>
 
     <div class="center-message">
-      <h1>Hello Dear 🤗</h1>
+      <h1>Welcome Admin!</h1>
     </div>
   </div>
 </body>
