@@ -6,8 +6,6 @@ if (isset($_SESSION['admin_logged_in'])) {
     exit();
 }
 
-$error = "";
-
 if (isset($_POST['login'])) {
     $username = trim($_POST['username']);
     $password = trim($_POST['password']);
@@ -20,8 +18,6 @@ if (isset($_POST['login'])) {
         $_SESSION['admin_name'] = $username;
         header("Location: dashboard.php");
         exit();
-    } else {
-        $error = "Username or password is incorrect.";
     }
 }
 ?>
@@ -35,7 +31,6 @@ if (isset($_POST['login'])) {
 </head>
 <body>
 <div class="login-wrapper">
-    <!-- Left: Login Form -->
     <div class="login-container glass-effect">
         <form method="POST" class="login-form">
             <h2>ADMIN LOGIN</h2>
@@ -48,16 +43,7 @@ if (isset($_POST['login'])) {
                 <i class="fas fa-eye toggle-password" onclick="togglePassword()"></i>
             </div>
             <button type="submit" name="login">Login</button>
-
-            <?php if (!empty($error)) { echo "<div class='error hidden'>$error</div>"; } ?>
         </form>
-    </div>
-
-    <!-- Right: Video Background -->
-    <div class="video-container">
-        <video autoplay loop muted playsinline>
-            <source src="video/login-animation.mp4" type="video/mp4">
-        </video>
     </div>
 </div>
 
@@ -73,15 +59,6 @@ function togglePassword() {
         toggleIcon.classList.replace("fa-eye-slash", "fa-eye");
     }
 }
-
-document.querySelectorAll(".input-group input").forEach(input => {
-    input.addEventListener("focus", () => {
-        const errorBox = document.querySelector(".error");
-        if (errorBox) {
-            errorBox.classList.remove("hidden");
-        }
-    });
-});
 </script>
 </body>
 </html>
