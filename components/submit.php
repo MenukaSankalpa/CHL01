@@ -15,9 +15,6 @@ function saveSignature($data, $prefix) {
 }
 
 $signatureFile  = saveSignature($_POST['signatureImage'], 'client');
-$signature1Path = saveSignature($_POST['interviewer1Signature'], 'int1');
-$signature2Path = saveSignature($_POST['interviewer2Signature'], 'int2');
-$signature3Path = saveSignature($_POST['interviewer3Signature'], 'int3');
 
 // CV file upload handler
 $cvFilePath = '';
@@ -49,25 +46,25 @@ extract($_POST);
 
 $sql = "INSERT INTO applicants (
     applicantName, homeTown, age, status, familyDetails, leaving, performance,experienceYears,
-    appearance, communication, experience, qualification, interest, totalMarks,
+    punctuality, preparedness, communication, experience, qualification, totalMarks, comment,
     noticePeriod, presentSalary, expectedSalary, possibleWork,
     capital_question,
     interviewer1Name, interviewer1Designation, interviewer1Date,
     interviewer2Name, interviewer2Designation, interviewer2Date,
     interviewer3Name, interviewer3Designation, interviewer3Date,
-    dateAppointment, position, companyName, agreedSalary, benefits,
+    dateAppointment, position, companyName, department, agreedSalary, benefits, cvPath,
     approval, name, aDesignation, aDate,
-    signaturePath, cvPath
+    signaturePath
 ) VALUES (?, ?, ?, ?, ?, ?, ?, ?,
-          ?, ?, ?, ?, ?, ?,
+          ?, ?, ?, ?, ?, ?, ?,
           ?, ?, ?, ?,
           ?,
           ?, ?, ?,
           ?, ?, ?,
           ?, ?, ?,
-          ?, ?, ?, ?, ?,
+          ?, ?, ?, ?, ?, ?, ?,
           ?, ?, ?, ?,
-          ?, ?)";
+          ?)";
 
 $stmt = $conn->prepare($sql);
 
@@ -75,26 +72,23 @@ if (!$stmt) {
     die("Prepare failed: " . $conn->error);
 }
 
-$stmt->bind_param("ssisssssiiiiiiiiisssssssssssssssissssss",
+$stmt->bind_param(
+  "ssisssssiiiissssiii" . 
+         "ssssssssss" .          
+         "ssssssssss",           
     $applicantName, $homeTown, $age, $status, $familyDetails, $leaving, $performance, $experienceYears,
-    $appearance, $communication, $experience, $qualification, $interest, $totalMarks,
+    $punctuality, $preparedness, $communication, $experience, $qualification, $totalMarks, $comment,
     $noticePeriod, $presentSalary, $expectedSalary, $possibleWork,
     $capital_question,
     $interviewer1Name, $interviewer1Designation, $interviewer1Date,
     $interviewer2Name, $interviewer2Designation, $interviewer2Date,
     $interviewer3Name, $interviewer3Designation, $interviewer3Date,
-    $dateAppoinment, $position, $companyName, $agreedSalary, $benefits,
+    $dateAppointment, $position, $companyName, $department, $agreedSalary, $benefits, $cvPath,
     $approval, $name, $aDesignation, $aDate,
-    $signatureFile, $cvFilePath
+    $signaturePath
 );
 
-/*if ($stmt->execute()) {
-    echo '<div style="color: green; font-weight: bold;">Data saved successfully!</div>';
-    echo "<p>Signature saved at: <a href='$signatureFile' target='_blank'>View Signature</a></p>";
-    echo "<p>CV saved at: <a href='$cvFilePath' target='_blank'>View CV</a></p>";
-} else {
-    echo '<div style="color: red; font-weight: bold;">Error saving data: ' . $stmt->error . '</div>';
-}*/
+
 
 // Top-right main menu button (fixed position)
 echo '<div style="position: absolute; top: 20px; right: 20px;">
