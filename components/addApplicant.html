@@ -37,32 +37,34 @@
         <input type="text" name="experienceYears" placeholder="EXPERIENCE (YEARS OR DETAILS)" required />
       </div>
 
-
       <!--Applicant information fill section 02-->
       <h2>GUIDELINES ON SELECTION CRITERIA</h2>
       <div class="field-group">
-        <label for="">APPEARANCE / PERSONALITY</label>
-        <input class="input2" type="number" name="mark[0]" placeholder="MARK" required />
+        <label for="">PUNCTUALITY</label>
+        <input class="input2 mark-field" type="number" name="mark[0]" placeholder="MARK" required />
+      </div>
+      <div class="field-group">
+        <label for="">PREPAREDNESS</label>
+        <input class="input2 mark-field" type="number" name="mark[1]" placeholder="MARK" required />
       </div>
       <div class="field-group">
         <label for="">COMMUNICATION SKILLS</label>
-        <input class="input2 mark-field" type="number" name="mark[1]" placeholder="MARK"  required />
+        <input class="input2 mark-field" type="number" name="mark[2]" placeholder="MARK" required />
       </div>
       <div class="field-group">
         <label for="">EXPERIENCE REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[2]" placeholder="MARK"  required />
+        <input class="input2 mark-field" type="number" name="mark[3]" placeholder="MARK" required />
       </div>
       <div class="field-group">
         <label for="">QUALIFICATION REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[3]" placeholder="MARK"  required />
-      </div>
-      <div class="field-group">
-        <label for="">INTEREST IN POSITION AND ORGANIZATION</label>
-        <input class="input2 mark-field" type="number" name="mark[4]" placeholder="MARK"  required />
+        <input class="input2 mark-field" type="number" name="mark[4]" placeholder="MARK" required />
       </div>
       <div class="field-group">
         <label for="">TOTAL INTERVIEW MARKS</label>
-        <input id="totalMark" class="input2 mark-field" type="number" placeholder="MARK" min="0" max="50" readonly/>
+        <input id="totalMark" class="input2 mark-field" type="number" placeholder="MARK" min="0" max="60" readonly/>
+      </div>
+      <div class="field-group">
+        <input type="text" name="comment" placeholder="COMMENT" />
       </div>
 
       <!--Applicant information fill section 03-->
@@ -130,39 +132,9 @@
             <td><input type="date" name="interviewer2Date" required /></td>
             <td><input type="date" name="interviewer3Date" required /></td>
           </tr>
-          <tr>
-            <td>
-              <div class="signature-box">
-                <canvas id="signature-pad1" width="200" height="100"></canvas><br />
-                <button type="button" onclick="clearSignaturePad('signature-pad1')">
-                  Clear
-                </button>
-                <input type="hidden" name="interviewer1Signature" id="signatureImage1" />
-              </div>
-            </td>
-            <td>
-              <div class="signature-box">
-                <canvas id="signature-pad2" width="200" height="100"></canvas><br />
-                <button type="button" onclick="clearSignaturePad('signature-pad2')">
-                  Clear
-                </button>
-                <input type="hidden" name="interviewer2Signature" id="signatureImage2" />
-              </div>
-            </td>
-            <td>
-              <div class="signature-box">
-                <canvas id="signature-pad3" width="200" height="100"></canvas><br />
-                <button type="button" onclick="clearSignaturePad('signature-pad3')">
-                  Clear
-                </button>
-                <input type="hidden" name="interviewer3Signature" id="signatureImage3" />
-              </div>
-            </td>
-          </tr>
         </tbody>
       </table>
       <br /><br />
-
 
       <div class="field-group">
         <input type="date" name="dateAppoinment" placeholder="DATE OF APPOINTMENT" required />
@@ -174,10 +146,19 @@
         <input type="text" name="companyName" placeholder="COMPANY NAME" required />
       </div>
       <div class="field-group">
+        <input type="text" name="department" placeholder="DEPARTMENT" required />
+      </div>
+      <div class="field-group">
         <input type="text" name="agreedSalary" placeholder="AGREED SALARY" required />
       </div>
       <div class="field-group">
         <input type="text" name="benefits" placeholder="BENEFITS" required />
+      </div>
+
+      <!--Applicant CV upload moved here -->
+      <div class="field-group">
+        <label for="cvFile">CV(pdf,doc,docx):</label>
+        <input type="file" name="cvFile" id="cvFile" accept=".pdf,.doc,.docx" required />
       </div>
 
       <!--Approval section-->
@@ -193,112 +174,69 @@
       <div class="field-group">
         <input type="date" name="aDate" required />
       </div>
-      <!--<div class="field-group">
-        <input  type="text" name="approval"  placeholder="Signature"  required>
-    </div>-->
+
       <h4>Client E-Signature</h4>
       <div class="signature-container">
         <canvas id="signature-pad" width="400" height="150"></canvas><br />
-        <button class="sigButton" type="button" onclick="clearSignature()">
-          Clear
-        </button>
+        <button class="sigButton" type="button" onclick="clearSignature()">Clear</button>
       </div>
 
       <input type="hidden" name="signatureImage" id="signatureImage" />
-
-      <!--Applicant cv upload-->
-      <div class="field-group">
-        <label for="cvFile">Upload CV (PDF/DOC/DOCX):</label>
-        <input type="file" name="cvFile" id="cvFile" accept=".pdf,.doc,.docx" required />
-      </div>
 
       <button type="submit">Submit</button>
     </div>
   </form>
 
   <script>
+    const totalMarkInput = document.getElementById("totalMark");
+    const markInputs = [
+      document.querySelector('input[name="mark[0]"]'),
+      document.querySelector('input[name="mark[1]"]'),
+      document.querySelector('input[name="mark[2]"]'),
+      document.querySelector('input[name="mark[3]"]'),
+      document.querySelector('input[name="mark[4]"]'),
+    ];
 
-  const totalMarkInput = document.getElementById("totalMark");
-  const markInputs = [
-    document.querySelector('input[name="mark[0]"]'),
-    document.querySelector('input[name="mark[1]"]'),
-    document.querySelector('input[name="mark[2]"]'),
-    document.querySelector('input[name="mark[3]"]'),
-    document.querySelector('input[name="mark[4]"]'),
-  ];
-
-  function calculateTotal() {
-    let sum = 0;
-    markInputs.forEach((input) => {
-      sum += parseInt(input.value) || 0;
-    });
-    totalMarkInput.value = sum;
-  }
-
-  markInputs.forEach((input) => {
-    input.addEventListener("input", calculateTotal);
-  });
-
-
-
-    // Setup signature pads
-    function setupSignaturePad(canvasId, hiddenInputId) {
-      const canvas = document.getElementById(canvasId);
-      const ctx = canvas.getContext("2d");
-      let drawing = false;
-
-      canvas.addEventListener("mousedown", () => {
-        drawing = true;
-        ctx.beginPath();
+    function calculateTotal() {
+      let sum = 0;
+      markInputs.forEach((input) => {
+        sum += parseInt(input.value) || 0;
       });
-      canvas.addEventListener("mouseup", () => {
-        drawing = false;
-      });
-      canvas.addEventListener("mouseout", () => {
-        drawing = false;
-      });
-      canvas.addEventListener("mousemove", (e) => {
-        if (!drawing) return;
-        const rect = canvas.getBoundingClientRect();
-        ctx.lineWidth = 2;
-        ctx.lineCap = "round";
-        ctx.strokeStyle = "#000";
-        ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-        ctx.stroke();
-        ctx.beginPath();
-        ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-      });
-
-      return {
-        clear: () => ctx.clearRect(0, 0, canvas.width, canvas.height),
-        save: () => {
-          const dataURL = canvas.toDataURL("image/png");
-          document.getElementById(hiddenInputId).value = dataURL;
-        },
-      };
+      totalMarkInput.value = sum;
     }
 
-    const sigPad1 = setupSignaturePad("signature-pad1", "signatureImage1");
-    const sigPad2 = setupSignaturePad("signature-pad2", "signatureImage2");
-    const sigPad3 = setupSignaturePad("signature-pad3", "signatureImage3");
-    const sigPadClient = setupSignaturePad("signature-pad", "signatureImage");
+    markInputs.forEach((input) => {
+      input.addEventListener("input", calculateTotal);
+    });
 
-    function clearSignaturePad(id) {
-      if (id === "signature-pad1") sigPad1.clear();
-      else if (id === "signature-pad2") sigPad2.clear();
-      else if (id === "signature-pad3") sigPad3.clear();
+    // Client signature pad
+    const canvas = document.getElementById("signature-pad");
+    const ctx = canvas.getContext("2d");
+    let drawing = false;
+
+    canvas.addEventListener("mousedown", () => drawing = true);
+    canvas.addEventListener("mouseup", () => drawing = false);
+    canvas.addEventListener("mouseleave", () => drawing = false);
+    canvas.addEventListener("mousemove", draw);
+
+    function draw(e) {
+      if (!drawing) return;
+      ctx.lineWidth = 2;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#000";
+
+      const rect = canvas.getBoundingClientRect();
+      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
+      document.getElementById("signatureImage").value = canvas.toDataURL();
     }
 
     function clearSignature() {
-      sigPadClient.clear();
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      document.getElementById("signatureImage").value = "";
     }
-
-    document.querySelector("form").addEventListener("submit", () => {
-      sigPad1.save();
-      sigPad2.save();
-      sigPad3.save();
-      sigPadClient.save();
-    });
   </script>
 </body>
 
