@@ -5,12 +5,18 @@
   <meta charset="UTF-8" />
   <title>HR Section</title>
   <link rel="stylesheet" href="../css/test.css" />
+
+  
 </head>
 
 <body>
 
+  <script src="main.js"></script> <!-- script here -->
+
   <form action="submit.php" method="POST" enctype="multipart/form-data">
     <div class="form-container">
+      <!--Company Logo-->
+      <img src="ceyline Group.png" alt="Company Logo" width="200" height="200" style="display: block; margin-left: auto; margin-right: auto;">
       <!--Applicant information fill section 01-->
       <h2>APPLICANT INFORMATION</h2>
       <div class="field-group">
@@ -79,7 +85,7 @@
         <input type="number" name="expectedSalary" placeholder="EXPECTED SALARY" required />
       </div>
       <div class="field-group">
-        <input type="number" name="possibleWork" placeholder="POSSIBLE DATE FOR COMMENCING WORK" required />
+        <input type="date" name="possibleWork" placeholder="POSSIBLE DATE FOR COMMENCING WORK" required />
       </div>
 
       <!--Applicant information fill section 04-->
@@ -157,10 +163,17 @@
       </div>
 
       <!--Applicant CV upload moved here -->
-      <div class="field-group">
-        <label for="cvFile">CV(pdf,doc,docx):</label>
-        <input type="file" name="cvFile" id="cvFile" accept=".pdf,.doc,.docx" required />
-      </div>
+<div class="field-group">
+  <label for="cvFile">CV (any format):</label>
+  <div class="custom-file-upload">
+    <input type="file" name="cvFile" id="cvFile" accept="*/*" required />
+    <span class="file-label">Choose file...</span>
+  </div>
+</div>
+
+
+
+
 
       <!--Approval section-->
       <div class="field-group">
