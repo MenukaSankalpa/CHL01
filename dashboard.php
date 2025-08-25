@@ -32,6 +32,7 @@ if (isset($_GET['logout'])) {
   <div class="dashboard-container">
     <div class="top-buttons">
       <a href="components/addApplicant.html" class="btn">Add Applicant</a>
+      <a href="components/createUser.php" class="btn">Create Users</a>
       <a href="components/viewApplicant.php" class="btn">View Applicant</a>
       <a href="components/deleteApplicant.php" class="btn">Delete Applicant</a>
     </div>
