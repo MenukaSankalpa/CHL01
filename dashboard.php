@@ -7,12 +7,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
 if (isset($_GET['logout'])) {
     session_destroy();
-
-    if (isset($_GET['redirect']) && $_GET['redirect'] === 'main') {
-        header("Location: index.php");
-    } else {
-        header("Location: index.php");
-    }
+    header("Location: index.php");
     exit();
 }
 ?>
@@ -20,26 +15,31 @@ if (isset($_GET['logout'])) {
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Admin Dashboard</title>
-  <link rel="stylesheet" href="css/dashboard.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <title>Admin Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="css/dashboard.css">
 </head>
 <body>
-  <div class="logout-container">
-    <a href="dashboard.php?logout=true&redirect=main" class="btn logout-btn">Logout</a>
-  </div>
-  <div class="dashboard-container">
-    <div class="top-buttons">
-      <a href="components/addApplicant.html" class="btn">Add Applicant</a>
-      <a href="components/createUser.php" class="btn">Create Users</a>
-      <a href="components/viewApplicant.php" class="btn">View Applicant</a>
-      <a href="components/deleteApplicant.php" class="btn">Delete Applicant</a>
+
+    <!-- Sidebar -->
+    <?php include('includes/sidebar.php'); ?>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Header -->
+        <?php include('includes/header.php'); ?>
+
+        <!-- Dashboard content -->
+        <div class="dashboard-container">
+            <h1>Welcome Admin!</h1>
+            <p>Use the sidebar to navigate through the dashboard options.</p>
+        </div>
+
+        <!-- Footer -->
+        <?php include('includes/footer.php'); ?>
     </div>
 
-    <div class="center-message">
-      <h1>Welcome Admin!</h1>
-    </div>
-  </div>
 </body>
 </html>
