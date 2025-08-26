@@ -1,0 +1,147 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* General Page Styles */
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #eef2f3, #ffffff);
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+.dashboard-container {
+    padding: 40px;
+}
+
+/* Headings */
+.dashboard-container h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+    color: #1f2937;
+}
+
+/* Forms */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin-bottom: 40px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="password"] {
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border 0.3s, box-shadow 0.3s;
+}
+
+form input:focus {
+    border-color: #1f2937;
+    box-shadow: 0 0 5px rgba(31,41,55,0.3);
+    outline: none;
+}
+
+form button {
+    background: #1f2937;
+    color: #fff;
+    padding: 10px 15px;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+}
+
+form button:hover {
+    background: #111827;
+    transform: translateY(-2px);
+}
+
+/* Messages */
+.dashboard-container p {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.dashboard-container p.success {
+    color: green;
+}
+
+.dashboard-container p.error {
+    color: red;
+}
+
+/* Users Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+    font-size: 14px;
+}
+
+table th {
+    background: #1f2937;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background: #f9f9f9;
+}
+
+table tr:hover {
+    background: #e5e7eb;
+}
+
+table a {
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 500;
+    margin-right: 8px;
+}
+
+table a:hover {
+    color: #e84242;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    table, thead, tbody, th, td, tr {
+        display: block;
+    }
+
+    table tr {
+        margin-bottom: 15px;
+    }
+
+    table td {
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 15px;
+        width: 45%;
+        font-weight: 600;
+        text-align: left;
+    }
+
+    table th {
+        display: none;
+    }
+}
