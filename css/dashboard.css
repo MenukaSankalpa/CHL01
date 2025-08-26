@@ -99,7 +99,6 @@ body {
   background: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
   padding: 0 20px;
   box-shadow: 0 2px 5px rgba(0,0,0,0.1);
   position: sticky;
@@ -107,15 +106,46 @@ body {
   z-index: 10;
 }
 
-/* Search Bar in Header */
+.company-info-header {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Space between logo and text */
+}
+
+.company-logo-header {
+    width: 45px;
+    height: 45px;
+    object-fit: contain; /* Maintains aspect ratio */
+    border-radius: 8px; /* Soft rounded corners for modern look */
+    background: #f8f9fa; /* Light subtle background */
+    padding: 5px; /* Inner spacing for a clean look */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* Modern soft shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-logo-header:hover {
+    transform: scale(1.40); /* Slight zoom on hover */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.company-label-header {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1f2937;
+    letter-spacing: 0.5px;
+}
+
+
+/* Search Bar (Right Side of Header) */
 .search-form {
   display: flex;
   align-items: center;
   background: #f1f1f1;
   border-radius: 20px;
   padding: 5px 10px;
-  margin-right: auto;
-  max-width: 250px;
+  margin-left: auto;
+  max-width: 400px;
+  flex: 1;
 }
 
 .search-form input {
@@ -128,15 +158,18 @@ body {
 }
 
 .search-form button {
-  background: none;
+  background: #1f2937;
   border: none;
   cursor: pointer;
   font-size: 16px;
-  color: #555;
+  color: #fff;
+  padding: 6px 10px;
+  border-radius: 50%;
+  transition: background 0.3s;
 }
 
 .search-form button:hover {
-  color: #000;
+  background: #111827;
 }
 
 /* Dashboard Content */
@@ -166,8 +199,8 @@ body {
 /* Footer */
 .footer {
   height: 50px;
-  background: #ffffff; /* changed from #1f2937 to match header */
-  color: #333; /* change text color to dark since background is light */
+  background: #ffffff;
+  color: #333;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -175,7 +208,6 @@ body {
   margin-top: auto;
   box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
 }
-
 
 /* Responsive */
 @media (max-width: 768px) {
@@ -188,6 +220,6 @@ body {
   }
 
   .search-form {
-    max-width: 180px;
+    max-width: 200px;
   }
 }
