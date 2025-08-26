@@ -1,0 +1,167 @@
+/* Fixed header and sidebar layout */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    display: flex;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #111827;
+    color: #fff;
+    overflow-y: auto;
+    padding-top: 60px; /* space for header */
+}
+
+header {
+    position: fixed;
+    top: 0;
+    left: 220px;
+    right: 0;
+    height: 60px;
+    background: #1f2937;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    z-index: 1000;
+}
+
+.main-content {
+    margin-left: 220px;
+    margin-top: 60px;
+    padding: 30px;
+    background: #f3f4f6;
+    min-height: calc(100vh - 60px);
+}
+
+/* Dashboard container */
+.dashboard-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Back button inside content */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: #1f2937;
+    color: #fff;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    margin-bottom: 20px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.back-btn i {
+    font-size: 14px;
+}
+
+.back-btn:hover {
+    background: #111827;
+    transform: translateY(-2px);
+}
+
+/* Form & table styling remains the same */
+#createUserForm {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 30px;
+    background: #fff;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+#createUserForm input {
+    flex: 1 1 220px;
+    padding: 12px 15px;
+    border: 1px solid #d1d5db;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
+#createUserForm input:focus {
+    border-color: #1f2937;
+    box-shadow: 0 0 6px rgba(31,41,55,0.2);
+    outline: none;
+}
+
+#createUserForm button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #1f2937;
+    color: #fff;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+#createUserForm button:hover {
+    background: #111827;
+    transform: scale(1.05);
+}
+
+/* Users Table styling same as previous code */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+}
+
+table th, table td {
+    padding: 12px 15px;
+    text-align: left;
+}
+
+table th {
+    background: #1f2937;
+    color: #fff;
+}
+
+table tr:nth-child(even) {
+    background: #f7f7f7;
+}
+
+table tr:hover {
+    background: #e2e8f0;
+}
+
+table a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.edit-btn:hover {
+    color: #3b82f6;
+}
+
+.delete-btn:hover {
+    color: #ef4444;
+}
+
+/* Responsive */
+@media(max-width:992px){
+    .sidebar {width:60px;}
+    .main-content {margin-left:60px;}
+    #createUserForm input {flex:1 1 100%;}
+}
