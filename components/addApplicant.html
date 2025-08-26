@@ -9,236 +9,154 @@
 
 <body>
 
-  <form action="submit.php" method="POST" enctype="multipart/form-data">
-    <div class="form-container">
-      <!--Applicant information fill section 01-->
-      <h2>APPLICANT INFORMATION</h2>
-      <div class="field-group">
-        <input type="text" name="applicantName" placeholder="NAME OF APPLICANT" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="homeTown" placeholder="HOME TOWN" required />
-      </div>
-      <div class="field-group">
-        <input type="number" name="age" placeholder="AGE" min="18" max="65" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="status" placeholder="PRESENT EMPLOYMENT STATUS" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="familyDetails" placeholder="FAMILY DETAILS" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="leaving" placeholder="REASON FOR LEAVING" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="performance" placeholder="PERFORMANCE AT EMPLOYMENT TEST" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="experienceYears" placeholder="EXPERIENCE (YEARS OR DETAILS)" required />
-      </div>
+  <div class="form-wrapper">
 
-      <!--Applicant information fill section 02-->
-      <h2>GUIDELINES ON SELECTION CRITERIA</h2>
-      <div class="field-group">
-        <label for="">PUNCTUALITY</label>
-        <input class="input2 mark-field" type="number" name="mark[0]" placeholder="MARK" required />
-      </div>
-      <div class="field-group">
-        <label for="">PREPAREDNESS</label>
-        <input class="input2 mark-field" type="number" name="mark[1]" placeholder="MARK" required />
-      </div>
-      <div class="field-group">
-        <label for="">COMMUNICATION SKILLS</label>
-        <input class="input2 mark-field" type="number" name="mark[2]" placeholder="MARK" required />
-      </div>
-      <div class="field-group">
-        <label for="">EXPERIENCE REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[3]" placeholder="MARK" required />
-      </div>
-      <div class="field-group">
-        <label for="">QUALIFICATION REQUIRED FOR THE JOB</label>
-        <input class="input2 mark-field" type="number" name="mark[4]" placeholder="MARK" required />
-      </div>
-      <div class="field-group">
-        <label for="">TOTAL INTERVIEW MARKS</label>
-        <input id="totalMark" class="input2 mark-field" type="number" placeholder="MARK" min="0" max="60" readonly/>
-      </div>
-      <div class="field-group">
-        <input type="text" name="comment" placeholder="COMMENT" />
-      </div>
+    <!-- Back Button -->
+    <button class="back-btn" onclick="window.history.back();">
+      <i class="fas fa-arrow-left"></i> Back
+    </button>
 
-      <!--Applicant information fill section 03-->
-      <div class="field-group">
-        <input type="text" name="noticePeriod" placeholder="NOTICE PERIOD" required />
+    <form action="submit.php" method="POST" enctype="multipart/form-data">
+      <div class="form-container">
+
+        <!-- Applicant Section 01 -->
+        <h2>APPLICANT INFORMATION</h2>
+        <div class="field-group">
+          <input type="text" name="applicantName" placeholder="NAME OF APPLICANT" required />
+          <input type="text" name="homeTown" placeholder="HOME TOWN" required />
+        </div>
+        <div class="field-group">
+          <input type="number" name="age" placeholder="AGE" min="18" max="65" required />
+          <input type="text" name="status" placeholder="PRESENT EMPLOYMENT STATUS" required />
+        </div>
+        <div class="field-group">
+          <input type="text" name="familyDetails" placeholder="FAMILY DETAILS" required />
+          <input type="text" name="leaving" placeholder="REASON FOR LEAVING" required />
+        </div>
+        <div class="field-group">
+          <input type="text" name="performance" placeholder="PERFORMANCE AT EMPLOYMENT TEST" required />
+          <input type="text" name="experienceYears" placeholder="EXPERIENCE (YEARS OR DETAILS)" required />
+        </div>
+
+        <!-- Applicant Section 02 -->
+        <h2>GUIDELINES ON SELECTION CRITERIA</h2>
+        <div class="field-group">
+          <label>PUNCTUALITY</label>
+          <input type="number" name="mark[0]" placeholder="MARK" class="input2 mark-field" required />
+          <label>PREPAREDNESS</label>
+          <input type="number" name="mark[1]" placeholder="MARK" class="input2 mark-field" required />
+        </div>
+        <div class="field-group">
+          <label>COMMUNICATION SKILLS</label>
+          <input type="number" name="mark[2]" placeholder="MARK" class="input2 mark-field" required />
+          <label>EXPERIENCE REQUIRED FOR THE JOB</label>
+          <input type="number" name="mark[3]" placeholder="MARK" class="input2 mark-field" required />
+        </div>
+        <div class="field-group">
+          <label>QUALIFICATION REQUIRED FOR THE JOB</label>
+          <input type="number" name="mark[4]" placeholder="MARK" class="input2 mark-field" required />
+        </div>
+        <div class="field-group">
+          <label>TOTAL INTERVIEW MARKS</label>
+          <input type="number" id="totalMark" class="input2 mark-field" placeholder="MARK" readonly />
+        </div>
+        <div class="field-group">
+          <input type="text" name="comment" placeholder="COMMENT" />
+        </div>
+
+        <!-- Applicant Section 03 -->
+        <div class="field-group">
+          <input type="text" name="noticePeriod" placeholder="NOTICE PERIOD" required />
+          <input type="number" name="presentSalary" placeholder="PRESENT SALARY" required />
+        </div>
+        <div class="field-group">
+          <input type="number" name="expectedSalary" placeholder="EXPECTED SALARY" required />
+          <input type="number" name="possibleWork" placeholder="POSSIBLE DATE FOR COMMENCING WORK" required />
+        </div>
+
+        <!-- Applicant Section 04 -->
+        <h2>OVERALL PERFORMANCE AT THE INTERVIEW</h2>
+        <div class="radio-group">
+          <label><input type="radio" name="capital_question" value="1" required /> MEETS JOB REQUIREMENT</label>
+          <label><input type="radio" name="capital_question" value="2" /> DOES NOT MEET JOB REQUIREMENT</label>
+          <label><input type="radio" name="capital_question" value="3" /> OVER QUALIFIED FOR THE JOB</label>
+          <label><input type="radio" name="capital_question" value="4" /> SUITABLE FOR ANOTHER POSITION</label>
+        </div>
+
+        <!-- HR Interview Table -->
+        <h3>Interview Conducted by CHL</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>1st INTERVIEWER</th>
+              <th>2nd INTERVIEWER</th>
+              <th>3rd INTERVIEWER</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><input type="text" name="interviewer1Name" placeholder="Name & Sign" required /></td>
+              <td><input type="text" name="interviewer2Name" placeholder="Name & Sign" required /></td>
+              <td><input type="text" name="interviewer3Name" placeholder="Name & Sign" required /></td>
+            </tr>
+            <tr>
+              <td><input type="text" name="interviewer1Designation" placeholder="Designation" required /></td>
+              <td><input type="text" name="interviewer2Designation" placeholder="Designation" required /></td>
+              <td><input type="text" name="interviewer3Designation" placeholder="Designation" required /></td>
+            </tr>
+            <tr>
+              <td><input type="date" name="interviewer1Date" required /></td>
+              <td><input type="date" name="interviewer2Date" required /></td>
+              <td><input type="date" name="interviewer3Date" required /></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!-- Appointment Section -->
+        <div class="field-group">
+          <input type="date" name="dateAppoinment" placeholder="DATE OF APPOINTMENT" required />
+          <input type="text" name="position" placeholder="POSITION" required />
+        </div>
+        <div class="field-group">
+          <input type="text" name="companyName" placeholder="COMPANY NAME" required />
+          <input type="text" name="department" placeholder="DEPARTMENT" />
+        </div>
+        <div class="field-group">
+          <input type="text" name="agreedSalary" placeholder="AGREED SALARY" required />
+          <input type="text" name="benefits" placeholder="BENEFITS" required />
+        </div>
+
+        <!-- CV Upload -->
+        <div class="field-group">
+          <label>Upload CV:</label>
+          <input type="file" name="cvFile" accept=".pdf,.doc,.docx" required />
+        </div>
+
+        <!-- Approval Section -->
+        <div class="field-group">
+          <input type="text" name="approval" placeholder="APPROVAL" />
+          <input type="text" name="name" placeholder="NAME" />
+        </div>
+        <div class="field-group">
+          <input type="text" name="aDesignation" placeholder="DESIGNATION" />
+          <input type="date" name="aDate" />
+        </div>
+
+        <!-- Signature Section -->
+        <h4>Client E-Signature</h4>
+        <div class="signature-container">
+          <canvas id="signature-pad" width="400" height="150"></canvas>
+          <button type="button" class="sigButton" onclick="clearSignature()">Clear</button>
+          <input type="hidden" name="signatureImage" id="signatureImage" />
+        </div>
+
+        <button type="submit">Submit</button>
+
       </div>
-      <div class="field-group">
-        <input type="number" name="presentSalary" placeholder="PRESENT SALARY" required />
-      </div>
-      <div class="field-group">
-        <input type="number" name="expectedSalary" placeholder="EXPECTED SALARY" required />
-      </div>
-      <div class="field-group">
-        <input type="number" name="possibleWork" placeholder="POSSIBLE DATE FOR COMMENCING WORK" required />
-      </div>
+    </form>
+  </div>
 
-      <!--Applicant information fill section 04-->
-      <h2>OVERALL PERFORMANCE AT THE INTERVIEW</h2>
-      <label>Applicant status?</label><br /><br />
-
-      <label><input type="radio" name="capital_question" value="1" required />
-        MEETS JOB REQUIREMENT</label><br />
-      <label><input type="radio" name="capital_question" value="2" /> DOES NOT
-        MEET JOB REQUIREMENT</label><br />
-      <label><input type="radio" name="capital_question" value="3" /> OVER
-        QUALIFIED FOR THE JOB</label><br />
-      <label><input type="radio" name="capital_question" value="4" /> SUITABLE FOR
-        ANOTHER POSITION</label><br /><br />
-
-      <!--Hr Information fill section 05-->
-      <h3>Interview Conducted by CHL</h3>
-      <table border="1" style="border-collapse: collapse; width: 100%; text-align: center">
-        <thead>
-          <tr>
-            <th>1st INTERVIEWER</th>
-            <th>2nd INTERVIEWER</th>
-            <th>3rd INTERVIEWER</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>
-              <input type="text" name="interviewer1Name" placeholder="Name & Sign" required />
-            </td>
-            <td>
-              <input type="text" name="interviewer2Name" placeholder="Name & Sign" required />
-            </td>
-            <td>
-              <input type="text" name="interviewer3Name" placeholder="Name & Sign" required />
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <input type="text" name="interviewer1Designation" placeholder="Designation" required />
-            </td>
-            <td>
-              <input type="text" name="interviewer2Designation" placeholder="Designation" required />
-            </td>
-            <td>
-              <input type="text" name="interviewer3Designation" placeholder="Designation" required />
-            </td>
-          </tr>
-          <tr>
-            <td><input type="date" name="interviewer1Date" required /></td>
-            <td><input type="date" name="interviewer2Date" required /></td>
-            <td><input type="date" name="interviewer3Date" required /></td>
-          </tr>
-        </tbody>
-      </table>
-      <br /><br />
-
-      <div class="field-group">
-        <input type="date" name="dateAppoinment" placeholder="DATE OF APPOINTMENT" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="position" placeholder="POSITION" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="companyName" placeholder="COMPANY NAME" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="department" placeholder="DEPARTMENT" />
-      </div>
-      <div class="field-group">
-        <input type="text" name="agreedSalary" placeholder="AGREED SALARY" required />
-      </div>
-      <div class="field-group">
-        <input type="text" name="benefits" placeholder="BENEFITS" required />
-      </div>
-
-      <!--Applicant CV upload moved here -->
-      <div class="field-group">
-        <label for="cvFile">CV(pdf,doc,docx):</label>
-        <input type="file" name="cvFile" id="cvFile" accept=".pdf,.doc,.docx" required />
-      </div>
-
-      <!--Approval section-->
-      <div class="field-group">
-        <input type="text" name="approval" placeholder="APPROVAL"  />
-      </div>
-      <div class="field-group">
-        <input type="text" name="name" placeholder="NAME" />
-      </div>
-      <div class="field-group">
-        <input type="text" name="aDesignation" placeholder="DESIGNATION" />
-      </div>
-      <div class="field-group">
-        <input type="date" name="aDate" />
-      </div>
-
-      <h4>Client E-Signature</h4>
-      <div class="signature-container">
-        <canvas id="signature-pad" width="400" height="150"></canvas><br />
-        <button class="sigButton" type="button" onclick="clearSignature()">Clear</button>
-      </div>
-
-      <input type="hidden" name="signatureImage" id="signatureImage" />
-
-      <button type="submit">Submit</button>
-    </div>
-  </form>
-
-  <script>
-    const totalMarkInput = document.getElementById("totalMark");
-    const markInputs = [
-      document.querySelector('input[name="mark[0]"]'),
-      document.querySelector('input[name="mark[1]"]'),
-      document.querySelector('input[name="mark[2]"]'),
-      document.querySelector('input[name="mark[3]"]'),
-      document.querySelector('input[name="mark[4]"]'),
-    ];
-
-    function calculateTotal() {
-      let sum = 0;
-      markInputs.forEach((input) => {
-        sum += parseInt(input.value) || 0;
-      });
-      totalMarkInput.value = sum;
-    }
-
-    markInputs.forEach((input) => {
-      input.addEventListener("input", calculateTotal);
-    });
-
-    // Client signature pad
-    const canvas = document.getElementById("signature-pad");
-    const ctx = canvas.getContext("2d");
-    let drawing = false;
-
-    canvas.addEventListener("mousedown", () => drawing = true);
-    canvas.addEventListener("mouseup", () => drawing = false);
-    canvas.addEventListener("mouseleave", () => drawing = false);
-    canvas.addEventListener("mousemove", draw);
-
-    function draw(e) {
-      if (!drawing) return;
-      ctx.lineWidth = 2;
-      ctx.lineCap = "round";
-      ctx.strokeStyle = "#000";
-
-      const rect = canvas.getBoundingClientRect();
-      ctx.lineTo(e.clientX - rect.left, e.clientY - rect.top);
-      ctx.stroke();
-      ctx.beginPath();
-      ctx.moveTo(e.clientX - rect.left, e.clientY - rect.top);
-      document.getElementById("signatureImage").value = canvas.toDataURL();
-    }
-
-    function clearSignature() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      document.getElementById("signatureImage").value = "";
-    }
-  </script>
+  <script src="../js/addApplicant.js"></script>
 </body>
 
 </html>
