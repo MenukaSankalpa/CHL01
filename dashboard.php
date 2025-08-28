@@ -1,13 +1,10 @@
 <?php
 include __DIR__ . '/includes/header.php';
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Admin Dashboard</title>
-</head>
-<body>
+<div class="page-area" id="mainContent">
     <h1>Welcome to Admin Dashboard</h1>
     <p>Here is your dashboard content.</p>
-</body>
-</html>
+</div>
+
+<!-- Optional JS for Bootstrap -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
